@@ -62,6 +62,8 @@
   .bar__inner { gap: var(--space-2); }
   .bar__right { gap: var(--space-2); }
   .bar .pill { padding-inline: var(--space-4); white-space: nowrap; }
+  /* The pill is an inline-flex row with its own gap, so the second word is a flex item
+     rather than part of the text node - hiding it leaves no stray space behind. */
   .cta-rest { display: none; }
 }
 
