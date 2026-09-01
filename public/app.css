@@ -1,0 +1,12 @@
+/*
+ * App-level additions to the LAKA design system.
+ *
+ * This file exists so nothing in the application has to reach for an inline style attribute,
+ * which would bypass the shared token layer. It is deliberately tiny: laka.css owns the
+ * design, and anything that belongs to the design system belongs there, not here.
+ */
+
+/* Corpus tables carry per-column alignment from the source Markdown's delimiter row.
+   laka.css already aligns cells left, so only the exceptions need a class. */
+.ta-right { text-align: right; }
+.ta-center { text-align: center; }

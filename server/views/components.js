@@ -46,16 +46,23 @@ export function chips (values) {
 
 /* ---------------------------------------------------------------- blocks -- */
 
-/** A pipe table, wrapped so wide tables scroll inside their own box rather than the page. */
+/**
+ * A pipe table, wrapped so wide tables scroll inside their own box rather than the page.
+ *
+ * Column alignment comes from the source Markdown's delimiter row. The stylesheet already
+ * aligns cells left, so only right and centre need a class and no cell needs an inline style.
+ */
 export function table ({ headers, align = [], rows, caption }) {
-  const head = headers.map((h, i) => `<th scope="col" style="text-align:${align[i] ?? 'left'}">${inline(h)}</th>`).join('')
+  const alignClass = (i) => {
+    const a = align[i]
+    return a === 'right' ? ' class="ta-right"' : a === 'center' ? ' class="ta-center"' : ''
+  }
+
+  const head = headers.map((h, i) => `<th scope="col"${alignClass(i)}>${inline(h)}</th>`).join('')
   const body = rows.map((row) => {
-    const cells = row.map((cell, i) => {
-      const style = ` style="text-align:${align[i] ?? 'left'}"`
-      return i === 0
-        ? `<th scope="row"${style}>${inline(cell)}</th>`
-        : `<td${style}>${inline(cell)}</td>`
-    }).join('')
+    const cells = row.map((cell, i) => (i === 0
+      ? `<th scope="row"${alignClass(i)}>${inline(cell)}</th>`
+      : `<td${alignClass(i)}>${inline(cell)}</td>`)).join('')
     return `<tr>${cells}</tr>`
   }).join('')
 
@@ -175,6 +182,7 @@ export function collectionPanel (collection, { headingLevel = 2 } = {}) {
     <h${headingLevel} id="${attr(collection.id)}">${esc(collection.title)}</h${headingLevel}>
     ${table({
       headers: collection.headers,
+      align: collection.align,
       rows: collection.records.map((r) => r.cells),
       caption: collection.title
     })}

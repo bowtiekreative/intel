@@ -99,6 +99,7 @@ ${section(`
       </p>
       ${table({
         headers: corpus.collections['change-states'].headers,
+        align: corpus.collections['change-states'].align,
         rows: states.map((r) => r.cells),
         caption: 'Five change states'
       })}
@@ -177,7 +178,8 @@ export function lakaPage () {
 ${section(`
       <h2 id="protocol">The canonical protocol</h2>
       <p class="tight">Every run walks the same seven stages. Elimination is recorded, not hidden &mdash; a discarded option with its reason is evidence too.</p>
-      ${table({ headers: c.protocol.headers, rows: c.protocol.records.map((r) => r.cells), caption: 'Canonical protocol' })}
+      ${table({ headers: c.protocol.headers,
+        align: c.protocol.align, rows: c.protocol.records.map((r) => r.cells), caption: 'Canonical protocol' })}
       ${provenance(c.protocol.records[0]?.defined_in)}`)}
 
 ${section(collectionPanel(c['change-states']))}
@@ -203,7 +205,8 @@ ${section(collectionPanel(c.operators))}
 ${section(`
       <h2 id="structural-matrix">The fifty-cell structural matrix</h2>
       <p class="tight">Ten internal variables against five change states. The cell is the prompt: what does this variable look like at this depth of change?</p>
-      ${table({ headers: c['structural-matrix'].headers, rows: c['structural-matrix'].records.map((r) => r.cells), caption: 'Fifty-cell structural matrix' })}
+      ${table({ headers: c['structural-matrix'].headers,
+        align: c['structural-matrix'].align, rows: c['structural-matrix'].records.map((r) => r.cells), caption: 'Fifty-cell structural matrix' })}
       ${provenance(c['structural-matrix'].records[0]?.defined_in)}
       <div class="actions">
         <a class="pill" href="/docs/laka-core-grammar">Read file 01 in full</a>
@@ -339,13 +342,15 @@ ${section(collectionPanel(c.layers))}
 ${section(`
       <h2 id="evidence-use-matrix">What each claim type may be used for</h2>
       <p class="tight">Report use and outreach use are separate permissions. A claim strong enough for an internal ledger is not automatically fit to put in front of an executive.</p>
-      ${table({ headers: c['evidence-use-matrix'].headers, rows: c['evidence-use-matrix'].records.map((r) => r.cells), caption: 'Evidence use matrix' })}
+      ${table({ headers: c['evidence-use-matrix'].headers,
+        align: c['evidence-use-matrix'].align, rows: c['evidence-use-matrix'].records.map((r) => r.cells), caption: 'Evidence use matrix' })}
       ${provenance(c['evidence-use-matrix'].records[0]?.defined_in)}`)}
 
 ${section(`
       <h2 id="security-rewrites">Saying security findings safely</h2>
       <p class="tight">A passive signal is not a vulnerability, and an outreach email is never the place to raise one. Route material security observations to a published security contact or a responsible-disclosure process.</p>
-      ${table({ headers: c['security-rewrites'].headers, rows: c['security-rewrites'].records.map((r) => r.cells), caption: 'Evidence-safe security phrasing' })}
+      ${table({ headers: c['security-rewrites'].headers,
+        align: c['security-rewrites'].align, rows: c['security-rewrites'].records.map((r) => r.cells), caption: 'Evidence-safe security phrasing' })}
       ${provenance(c['security-rewrites'].records[0]?.defined_in)}
       <div class="actions">
         <a class="pill" href="/docs/evidence-provenance-standard">Read file 03 in full</a>
@@ -598,6 +603,7 @@ ${section(`
       <p class="tight">The connector profile decides whether a use is passive, not the product name. CM2 is routed to a separately scoped security engagement; CM3 is prohibited in this system.</p>
       ${table({
         headers: corpus.collections['collection-modes'].headers,
+        align: corpus.collections['collection-modes'].align,
         rows: corpus.collections['collection-modes'].records.map((r) => r.cells),
         caption: 'Collection modes'
       })}`)}`
@@ -673,6 +679,7 @@ ${section(`
       <h2 id="input-labels">Input labels</h2>
       ${table({
         headers: corpus.collections['input-labels'].headers,
+        align: corpus.collections['input-labels'].align,
         rows: corpus.collections['input-labels'].records.map((r) => r.cells),
         caption: 'Financial input labels'
       })}
@@ -980,6 +987,7 @@ ${section(`
       <h2>Release verdicts</h2>
       ${table({
         headers: corpus.collections.verdicts.headers,
+        align: corpus.collections.verdicts.align,
         rows: corpus.collections.verdicts.records.map((r) => r.cells),
         caption: 'Release verdicts'
       })}`)}
@@ -1045,7 +1053,8 @@ export function referencePage (collection) {
   </section>
 
 ${section(`
-      ${table({ headers: collection.headers, rows: collection.records.map((r) => r.cells), caption: collection.title })}
+      ${table({ headers: collection.headers,
+        align: collection.align, rows: collection.records.map((r) => r.cells), caption: collection.title })}
       ${provenance(collection.records[0]?.defined_in)}
       <div class="actions">
         <a class="pill" href="/reference">All lookup tables</a>

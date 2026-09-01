@@ -286,6 +286,7 @@ function buildTableCollections () {
       title: spec.title,
       source: table ? pointer(table) : { file: spec.file, section: spec.anchor, table: null, missing: true },
       headers: table?.headers ?? [],
+      align: table?.align ?? [],
       count: table ? table.rows.length : 0,
       records: recordsFrom(table)
     }

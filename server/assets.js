@@ -22,6 +22,7 @@ function fingerprint (filename, type) {
 
 export const ASSETS = {
   css: fingerprint('laka.css', 'text/css; charset=utf-8'),
+  appCss: fingerprint('app.css', 'text/css; charset=utf-8'),
   js: fingerprint('site.js', 'text/javascript; charset=utf-8')
 }
 

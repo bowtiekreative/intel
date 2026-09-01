@@ -212,6 +212,7 @@ export function layout (page) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="${ASSETS.css.url}">
+  <link rel="stylesheet" href="${ASSETS.appCss.url}">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="alternate" type="application/json" href="${ORIGIN}/v1">${jsonLd}
 </head>
