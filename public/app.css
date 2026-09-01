@@ -3,10 +3,86 @@
  *
  * This file exists so nothing in the application has to reach for an inline style attribute,
  * which would bypass the shared token layer. It is deliberately tiny: laka.css owns the
- * design, and anything that belongs to the design system belongs there, not here.
+ * design, and anything that belongs to the design system belongs there, not here. Every
+ * value below is a design-system token or a plain column count.
  */
 
 /* Corpus tables carry per-column alignment from the source Markdown's delimiter row.
    laka.css already aligns cells left, so only the exceptions need a class. */
 .ta-right { text-align: right; }
 .ta-center { text-align: center; }
+
+/*
+ * Column counts.
+ *
+ * laka.css sizes .grid--N with `repeat(auto-fit, minmax(Npx, 1fr))`, so the track count is
+ * whatever fits rather than the number in the class name: on a 1240px canvas both .grid--2
+ * and .grid--3 resolve to four tracks, which breaks a six-card set into a ragged 4 + 2.
+ *
+ * Above each grid's comfortable width, pin the count the class name promises. Below it the
+ * original auto-fit behaviour is untouched, so the reflow down to a single column at 320px
+ * still comes from the design system.
+ */
+@media (min-width: 860px) {
+  .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1040px) {
+  .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/*
+ * Field grid for the scorer.
+ *
+ * laka.css's .filters is a filter *bar*: it aligns items to the end so a submit button lines
+ * up with the inputs beside it. The scorer is a grid of many equal fields whose hint text
+ * varies in length, and end-alignment there leaves the selects at different heights. Same
+ * responsive behaviour, aligned to the top instead.
+ */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/*
+ * The header bar at phone widths.
+ *
+ * laka.css sizes the bar's four elements for a wide canvas: the site name never wraps, and
+ * the pills carry --space-6 of horizontal padding. Below about 600px that totals more than
+ * the viewport, so the MENU pill rides over the site name.
+ *
+ * The nav contract fixes the element *count*, not the CTA's wording, so the CTA drops to its
+ * first word and the pills tighten. Nothing is hidden that the user needs: MENU still reads
+ * MENU, and the CTA still goes to the same place.
+ */
+@media (max-width: 600px) {
+  .bar__inner { gap: var(--space-2); }
+  .bar__right { gap: var(--space-2); }
+  .bar .pill { padding-inline: var(--space-4); white-space: nowrap; }
+  .cta-rest { display: none; }
+}
+
+/*
+ * At 320px the four elements only fit at reduced sizes. The seal drops to its 24px floor,
+ * the name and pill labels step down, and the padding tightens - every element keeps its
+ * label, so the bar is still seal + name + MENU + one CTA.
+ */
+@media (max-width: 380px) {
+  .bar__inner, .bar__right { gap: var(--space-1); }
+  .bar__left { gap: var(--space-2); }
+  .bar__seal { width: 24px; height: 24px; }
+  .bar__name { font-size: 13px; }
+  .bar .pill { padding-inline: var(--space-2); font-size: 12px; gap: var(--space-1); }
+  .bar .menu__icon { width: 14px; height: 14px; }
+}
+
+/*
+ * Overlap guard. `.bar__name` is `white-space: nowrap` with `min-width: 0`, so as a flex item
+ * it shrinks its box while its text keeps painting at full width - which is how the name ends
+ * up underneath the MENU pill rather than merely overflowing. Clipping the box means the worst
+ * case at any viewport is a truncated name, never two elements drawn on top of each other.
+ */
+.bar__name { overflow: hidden; text-overflow: ellipsis; }

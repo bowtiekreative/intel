@@ -123,7 +123,7 @@ function header () {
             </div>
           </nav>
         </details>
-        <a class="pill pill--solid" href="/score">Score something</a>
+        <a class="pill pill--solid" href="/score">Score<span class="cta-rest"> something</span></a>
       </div>
     </div>
   </header>`

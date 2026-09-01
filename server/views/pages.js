@@ -166,7 +166,7 @@ export function lakaPage () {
   const c = corpus.collections
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 01',
         title: 'The LAKA grammar',
@@ -236,7 +236,7 @@ export function lensesPage (query = {}) {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 01, layer D',
         title: `The ${cube.size}-lens expansion cube`,
@@ -315,7 +315,7 @@ export function evidencePage () {
   const c = corpus.collections
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Files 00 and 03',
         title: 'Evidence, truth labels and what you may say',
@@ -370,7 +370,7 @@ ${section(`
 export function phasesPage () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 04',
         title: 'The nine-phase audit',
@@ -420,7 +420,7 @@ export function workflowsPage () {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 17',
         title: 'Automation workflows',
@@ -467,7 +467,7 @@ export function agentsPage () {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 19',
         title: 'The agent prompt pack',
@@ -507,7 +507,7 @@ ${section(`
 export function agentPage (agent) {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: `File 19 · ${agent.role.replace(/-/g, ' ')}`,
         title: agent.name,
@@ -544,7 +544,7 @@ export function toolsPage ({ query, results, total }) {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Files 05 to 09',
         title: 'The tool and source registry',
@@ -621,7 +621,7 @@ export function toolPage (tool) {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: `${tool.library} · ${tool.category}`,
         title: tool.name,
@@ -665,7 +665,7 @@ export function financialModelsPage () {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 12',
         title: 'Financial impact models',
@@ -714,7 +714,7 @@ export function scoringPage () {
   const c = corpus.collections
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 11',
         title: 'How the scores work',
@@ -845,7 +845,7 @@ export function scorePage ({ rubric = 'finding', values = {}, result = null } = 
     ? `
       <h2 class="mt-9">Hard gates</h2>
       <p class="tight">Answer every one. A failed gate blocks the opportunity regardless of the number.</p>
-      <div class="filters">
+      <div class="fields">
         ${r.hard_gates.map((g) => `
         <div class="field">
           <label for="gate_${attr(g.id)}">${esc(g.question)}</label>
@@ -858,7 +858,7 @@ export function scorePage ({ rubric = 'finding', values = {}, result = null } = 
         </div>`).join('')}
       </div>
 
-      <div class="filters mt-7">
+      <div class="fields mt-7">
         <div class="field">
           <label for="confidence">Evidence confidence</label>
           <select id="confidence" name="confidence">
@@ -881,7 +881,7 @@ export function scorePage ({ rubric = 'finding', values = {}, result = null } = 
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 11, executable',
         title: 'Score something',
@@ -897,7 +897,7 @@ ${section(`
 
       <form method="post" action="/score#result">
         <input type="hidden" name="rubric" value="${attr(r.id)}">
-        <div class="filters">
+        <div class="fields">
           ${r.dimensions.map((d) => scaleSelect(d.key, d, values[d.key])).join('')}
         </div>
         ${gateFields}
@@ -936,7 +936,7 @@ ${section(`
 export function guardrailsPage () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'File 18',
         title: 'Legal, ethical and safety guardrails',
@@ -973,7 +973,7 @@ export function guardrailsPage () {
 export function checklistsPage () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Across the corpus',
         title: 'Acceptance checklists',
@@ -1011,7 +1011,7 @@ ${section(`
 export function referenceIndex () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Typed collections',
         title: 'Lookup tables',
@@ -1043,7 +1043,7 @@ ${section(`
 export function referencePage (collection) {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: `File ${collection.source.file}`,
         title: collection.title,
@@ -1074,7 +1074,7 @@ ${section(`
 export function docsPage () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'The library',
         title: 'Source documents',
@@ -1113,7 +1113,7 @@ export function docPage (doc) {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: doc.number ? `File ${doc.number}` : 'Library index',
         title: doc.title,
@@ -1173,7 +1173,7 @@ export function apiPage () {
 
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Public JSON, no key',
         title: 'API reference',
@@ -1284,7 +1284,7 @@ ${section(`
 export function searchPage ({ q, results }) {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({ eyebrow: 'Search', title: 'Search the library', lede: 'Documents, sections, tools, phases, agents, financial models, workflows, guardrails and every lookup record.' })}
       <form method="get" action="/search">
         <div class="filters">
@@ -1328,7 +1328,7 @@ ${section(q
 export function privacyPage () {
   const body = `
   <section>
-    <div class="wrap stack narrow">
+    <div class="wrap stack">
       ${pageHead({
         eyebrow: 'Privacy',
         title: 'What this site collects',
