@@ -1,0 +1,27 @@
+services:
+  intel-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOST: 0.0.0.0
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-https://intel.bowtiekreative.com}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.intel-system.rule=Host(`intel.bowtiekreative.com`)
+      - traefik.http.routers.intel-system.entrypoints=websecure
+      - traefik.http.routers.intel-system.tls=true
+      - traefik.http.routers.intel-system.tls.certresolver=letsencrypt
+      - traefik.http.services.intel-system.loadbalancer.server.port=3000
