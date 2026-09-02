@@ -143,7 +143,7 @@ function footer () {
       </div>
       <div class="foot__legal">
         <p class="m-0">${esc(corpus.manifest.title)} v${esc(corpus.manifest.version)} · research baseline ${esc(corpus.manifest.research_baseline)} · ${inv.documents} documents</p>
-        <p class="m-0"><a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://github.com/bowtiekreative/intel" rel="noopener">Source</a></p>
+        <p class="m-0"><a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="https://github.com/bowtiekreative/intel" rel="noopener">Source</a></p>
         <p class="m-0">Powered by <a href="https://bowtiekreative.com">Bow Tie Kreative</a></p>
       </div>
       <p class="muted mt-6 t-13 wide">Strategic and technical guidance, not legal, investment or penetration-testing advice. Tool entries were catalogued at the ${esc(corpus.manifest.research_baseline)} research baseline; verify licences, tiers and source terms before deployment.</p>
