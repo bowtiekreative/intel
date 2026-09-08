@@ -209,9 +209,9 @@ export function layout (page) {
   <meta name="twitter:description" content="${attr(description)}">
   <meta name="twitter:image" content="https://media.publit.io/file/SEO-thumbnails/intel-bowtiekreative-com.png">
   <meta name="theme-color" content="#07090D">
-  <link rel="icon" href="${BRAND}/favicon-32.png" sizes="32x32">
-  <link rel="icon" href="${BRAND}/favicon-48.png" sizes="48x48">
-  <link rel="apple-touch-icon" href="${BRAND}/apple-touch-icon-180.png">
+
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
@@ -219,6 +219,18 @@ export function layout (page) {
   <link rel="stylesheet" href="${ASSETS.appCss.url}">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="alternate" type="application/json" href="${ORIGIN}/v1">${jsonLd}
+
+
+
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

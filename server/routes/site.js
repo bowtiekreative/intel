@@ -189,8 +189,8 @@ export default async function siteRoutes (app) {
       background_color: '#07090D',
       theme_color: '#07090D',
       icons: [
-        { src: 'https://designsystem.bowtiekreative.com/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
-        { src: 'https://designsystem.bowtiekreative.com/brand/icon-512.png', sizes: '512x512', type: 'image/png' },
+        { src: '/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/web-app-manifest-512x512.png', sizes: '512x512', type: 'image/png' },
         { src: 'https://designsystem.bowtiekreative.com/brand/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
       ]
     }))
