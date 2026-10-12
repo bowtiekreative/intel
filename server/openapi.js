@@ -276,23 +276,6 @@ export function buildOpenApi () {
         responses: { ...ok('The prompt and its handoff contract.', OBJECT), ...notFound }
       }
     },
-    '/v1/guardrails': {
-      get: {
-        tags: ['Governance'],
-        summary: 'Legal, privacy and safety guardrails',
-        description: 'Guidance, not legal advice. Jurisdiction coverage is bounded.',
-        parameters: [queryParam('jurisdiction', 'Filter to a jurisdiction; sections that apply everywhere are always included.', { enum: ['CA', 'US', 'EU'] })],
-        responses: ok('Guardrail summaries.', OBJECT)
-      }
-    },
-    '/v1/guardrails/{id}': {
-      get: {
-        tags: ['Governance'],
-        summary: 'One guardrail section',
-        parameters: [pathParam('id', 'Guardrail id.', { enum: corpus.guardrails.map((g) => g.id) })],
-        responses: { ...ok('The guardrail.', OBJECT), ...notFound }
-      }
-    },
     '/v1/checklists': {
       get: { tags: ['Governance'], summary: 'Every acceptance checklist', responses: ok('Checklist summaries.', OBJECT) }
     },
@@ -418,7 +401,7 @@ export function buildOpenApi () {
       { name: 'Corpus', description: 'The source documents, their sections, tables and fenced blocks.' },
       { name: 'Grammar', description: 'The LAKA layers, the expansion cube and the typed lookup collections.' },
       { name: 'Method', description: 'Phases, workflows and agent prompts.' },
-      { name: 'Governance', description: 'Guardrails and acceptance checklists.' },
+      { name: 'Governance', description: 'Acceptance checklists.' },
       { name: 'Tools', description: 'The tool and source registry.' },
       { name: 'Economics', description: 'Financial impact models.' },
       { name: 'Scoring', description: 'The four rubrics, executable.' },

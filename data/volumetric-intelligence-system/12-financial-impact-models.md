@@ -179,7 +179,7 @@ Avoided contacts = Annual contacts
 Cost value = Avoided contacts × Fully loaded cost per resolved contact
 ```
 
-Guardrails: repeat contact rate, customer satisfaction, escalation, accessibility, and error severity.
+Quality checks: repeat contact rate, customer satisfaction, escalation, accessibility, and error severity.
 
 ## 12. Error and rework
 

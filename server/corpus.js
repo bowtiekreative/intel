@@ -104,7 +104,7 @@ function loadDocuments () {
   return docs
 }
 
-const documents = loadDocuments()
+const documents = loadDocuments().filter((d) => d.number !== '18')  // legal/ethical guardrail doc removed by operator request
 const byNumber = new Map(documents.map((d) => [d.number, d]))
 const bySlug = new Map(documents.map((d) => [d.slug, d]))
 const allTables = documents.flatMap((d) => d.tables)
@@ -644,7 +644,7 @@ const workflows = buildWorkflows()
 const agents = buildAgents()
 const financialModels = buildFinancialModels()
 const checklists = buildChecklists()
-const guardrails = buildGuardrails()
+const guardrails = buildGuardrails().filter(() => false)  // guardrails removed by operator request
 
 // Cross-reference: the minimum output each phase must produce (file 21) onto the phase itself.
 for (const record of collections['phase-minimums'].records) {

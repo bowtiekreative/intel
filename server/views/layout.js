@@ -79,7 +79,6 @@ export const MENU = [
     label: 'Running it safely',
     items: [
       { href: '/score', title: 'Score something', note: 'Findings, opportunities, outreach, leads' },
-      { href: '/guardrails', title: 'Legal and ethical guardrails', note: 'CASL, PIPEDA, CAN-SPAM, GDPR' },
       { href: '/checklists', title: 'Acceptance checklists', note: `${inv.checklist_items} gate items` },
       { href: '/scoring', title: 'How the scores work', note: 'Weights, gates and bands' }
     ]

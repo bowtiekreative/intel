@@ -96,7 +96,7 @@ SHARED RULES
 
 12. For every high-materiality finding: write the strongest alternative, search
     for disconfirming evidence, complete D1–D14 or reasoned N/A, and propose a
-    reversible next test with baseline, metric, threshold, guardrail, and stop rule.
+    reversible next test with baseline, metric, threshold, quality check, and stop rule.
 
 13. Return research artifacts only. Do not publish, contact, send, update CRM,
     or mutate an external system.
@@ -162,7 +162,7 @@ findings:
       baseline: ""
       threshold: ""
       window: ""
-      guardrail: ""
+      quality_check: ""
       stop_rule: ""
     outreach_eligible: false
 sources:
@@ -299,7 +299,7 @@ and consent language. Public tags do not prove correct analytics; internal conve
 CAC, attribution, and lead quality are [U] without authorized data.
 
 Generate channel and format options, C0–C4 interventions, reversible tests,
-metrics, guardrails, and stop rules. Normalize geography/language/device/product and
+metrics, quality checks, and stop rules. Normalize geography/language/device/product and
 separate demand proxies from addressable demand.
 ```
 

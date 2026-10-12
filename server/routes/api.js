@@ -45,8 +45,6 @@ export const ENDPOINTS = [
   { method: 'GET', path: '/v1/workflows/{id}', summary: 'One workflow stage' },
   { method: 'GET', path: '/v1/agents', summary: 'The multi-agent prompt pack' },
   { method: 'GET', path: '/v1/agents/{id}', summary: 'One agent prompt, verbatim' },
-  { method: 'GET', path: '/v1/guardrails', summary: 'Legal, privacy and safety guardrails, filterable by jurisdiction' },
-  { method: 'GET', path: '/v1/guardrails/{id}', summary: 'One guardrail section' },
   { method: 'GET', path: '/v1/checklists', summary: 'Every acceptance checklist in the corpus' },
   { method: 'GET', path: '/v1/checklists/{id}', summary: 'One checklist' },
 
@@ -404,25 +402,8 @@ export default async function apiRoutes (app) {
     return agent
   })
 
-  // ---- guardrails and checklists --------------------------------------------
-  app.get('/v1/guardrails', async (req) => {
-    const jurisdiction = req.query.jurisdiction ? String(req.query.jurisdiction).toUpperCase() : null
-    const results = corpus.guardrails
-      .filter((g) => !jurisdiction || g.jurisdiction === jurisdiction || g.jurisdiction === 'any')
-      .map((g) => ({ id: g.id, title: g.title, jurisdiction: g.jurisdiction, rules: g.rules.length, href: `/v1/guardrails/${g.id}` }))
-    return {
-      count: results.length,
-      jurisdictions: [...new Set(corpus.guardrails.map((g) => g.jurisdiction))],
-      note: 'Guidance, not legal advice. Jurisdiction coverage is bounded - see the coverage-boundary section.',
-      results
-    }
-  })
+  // ---- checklists -----------------------------------------------------------
 
-  app.get('/v1/guardrails/:id', async (req, reply) => {
-    const guardrail = corpus.guardrailsById.get(String(req.params.id))
-    if (!guardrail) return notFound(reply, 'guardrail', req.params.id)
-    return guardrail
-  })
 
   app.get('/v1/checklists', async () => ({
     count: corpus.checklists.length,

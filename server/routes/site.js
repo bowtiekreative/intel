@@ -12,7 +12,7 @@ import { search } from './api.js'
 import { layout, ORIGIN } from '../views/layout.js'
 import {
   home, lakaPage, lensesPage, evidencePage, phasesPage, workflowsPage, agentsPage, agentPage,
-  toolsPage, toolPage, financialModelsPage, scoringPage, scorePage, guardrailsPage,
+  toolsPage, toolPage, financialModelsPage, scoringPage, scorePage, 
   checklistsPage, referenceIndex, referencePage, docsPage, docPage, apiPage, searchPage,
   privacyPage, notFoundPage
 } from '../views/pages.js'
@@ -123,7 +123,6 @@ export default async function siteRoutes (app) {
     return page(reply, scorePage({ rubric: name, values, result }), { cache: 'no-store' })
   })
 
-  app.get('/guardrails', async (req, reply) => page(reply, guardrailsPage()))
   app.get('/checklists', async (req, reply) => page(reply, checklistsPage()))
 
   // ---- reference ------------------------------------------------------------
@@ -160,7 +159,7 @@ export default async function siteRoutes (app) {
   app.get('/sitemap.xml', async (req, reply) => {
     const paths = [
       '/', '/laka', '/lenses', '/evidence', '/phases', '/workflows', '/agents', '/tools',
-      '/financial-models', '/scoring', '/score', '/guardrails', '/checklists', '/reference',
+      '/financial-models', '/scoring', '/score', '/checklists', '/reference',
       '/docs', '/api', '/search', '/privacy',
       ...corpus.documents.map((d) => `/docs/${d.slug}`),
       ...corpus.agents.map((a) => `/agents/${a.id}`),
@@ -250,7 +249,6 @@ Read the doctrine:
 - ${ORIGIN}/v1/agents - the ${inv.agents} agent prompts, verbatim
 - ${ORIGIN}/v1/tools?library=05 - the tool and source registry
 - ${ORIGIN}/v1/financial-models - the ${inv.financial_models} impact models
-- ${ORIGIN}/v1/guardrails?jurisdiction=CA - legal and ethical guardrails
 - ${ORIGIN}/v1/search?q= - search everything
 
 Compute:

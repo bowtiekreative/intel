@@ -139,7 +139,6 @@ ${section(`
         ${corpus.manifest.operating_rules.slice(0, 6).map((r) => `<li><div>${inline(r)}</div></li>`).join('')}
       </ol>
       <div class="actions">
-        <a class="pill" href="/guardrails">Legal and ethical guardrails</a>
         <a class="pill" href="/checklists">Acceptance checklists</a>
       </div>`)}`
 
@@ -354,7 +353,6 @@ ${section(`
       ${provenance(c['security-rewrites'].records[0]?.defined_in)}
       <div class="actions">
         <a class="pill" href="/docs/evidence-provenance-standard">Read file 03 in full</a>
-        <a class="pill" href="/guardrails">Legal and ethical guardrails</a>
       </div>`)}`
 
   return {
@@ -931,43 +929,6 @@ ${section(`
   }
 }
 
-/* ----------------------------------------------------------- guardrails -- */
-
-export function guardrailsPage () {
-  const body = `
-  <section>
-    <div class="wrap stack">
-      ${pageHead({
-        eyebrow: 'File 18',
-        title: 'Legal, ethical and safety guardrails',
-        lede: 'Public does not mean unrestricted. Visibility is not permission, permission is not relevance, and relevance is not consent. This is guidance rather than legal advice, and its jurisdiction coverage is deliberately bounded.'
-      })}
-      ${toc(corpus.guardrails.map((g) => ({ level: 2, anchor: g.id, title: g.title })))}
-    </div>
-  </section>
-
-  ${corpus.guardrails.map((g) => section(`
-      ${g.jurisdiction !== 'any' ? `<p class="eyebrow">${esc(g.jurisdiction)}</p>` : ''}
-      <h2 id="${attr(g.id)}">${esc(g.title.replace(/^\d+[A-Z]?\.\s*/, ''))}</h2>
-      ${g.prose.map((p) => `<p class="tight">${inline(p)}</p>`).join('')}
-      ${g.rules.length ? `<ul class="stack">${g.rules.map((x) => `<li>${inline(x)}</li>`).join('')}</ul>` : ''}
-      ${g.code.map((b) => `<pre><code>${esc(b.content)}</code></pre>`).join('')}
-      ${g.subsections.map((s) => `
-      <div class="finding">
-        <div class="finding__head"><h3 class="t-20 m-0">${esc(s.title)}</h3></div>
-        ${s.prose.map((p) => `<p>${inline(p)}</p>`).join('')}
-        ${s.rules.length ? `<ul class="stack">${s.rules.map((x) => `<li>${inline(x)}</li>`).join('')}</ul>` : ''}
-      </div>`).join('')}
-      ${provenance(g.defined_in)}`)).join('')}`
-
-  return {
-    title: 'Legal and ethical guardrails',
-    description: 'CASL, PIPEDA, CAN-SPAM, GDPR, platform terms, copyright, responsible disclosure, data minimization, retention and the human-review triggers.',
-    path: '/guardrails',
-    body
-  }
-}
-
 /* ---------------------------------------------------------- checklists -- */
 
 export function checklistsPage () {
@@ -1285,7 +1246,7 @@ export function searchPage ({ q, results }) {
   const body = `
   <section>
     <div class="wrap stack">
-      ${pageHead({ eyebrow: 'Search', title: 'Search the library', lede: 'Documents, sections, tools, phases, agents, financial models, workflows, guardrails and every lookup record.' })}
+      ${pageHead({ eyebrow: 'Search', title: 'Search the library', lede: 'Documents, sections, tools, phases, agents, financial models, workflows and every lookup record.' })}
       <form method="get" action="/search">
         <div class="filters">
           <div class="field">
@@ -1353,7 +1314,7 @@ ${section(`
         They are strategic and technical guidance &mdash; not legal, investment or penetration-testing
         advice &mdash; and their jurisdiction coverage is explicitly bounded. If you are running an audit
         with them, the obligations in
-        <a href="/guardrails">the guardrails</a> are yours, not this site's.
+        the platform rules are yours, not this site's.
       </p>
 
       <h2 class="mt-9">Contact</h2>
